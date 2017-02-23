@@ -11,14 +11,14 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project openfed/openfed8-project:8.x target-dir --stability dev --no-interaction
+composer create-project openfed/openfed8-project:8.x MYPROJECT --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your
 installation.
 
 ```
-cd target-dir
+cd MYPROJECT
 composer require drupal/devel:~1.0
 ```
 
