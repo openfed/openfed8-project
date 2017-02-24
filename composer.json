@@ -72,6 +72,7 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ]
-        }
+        },
+        "enable-patching": true
     }
 }
