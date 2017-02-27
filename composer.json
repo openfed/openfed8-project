@@ -79,7 +79,6 @@
             "package": {
                 "name": "ckeditor/plugins/notificationaggregator",
                 "version": "4.6.2",
-                "version": "4.6.2",
                 "type": "drupal-library",
                 "dist": {
                     "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.6.2.zip",
