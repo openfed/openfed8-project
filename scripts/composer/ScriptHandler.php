@@ -26,6 +26,8 @@ class ScriptHandler {
       'profiles',
       'themes',
       'libraries',
+      'libraries/ckeditor',
+      'libraries/ckeditor/plugins',
     ];
 
     // Required for unit testing

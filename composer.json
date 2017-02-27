@@ -32,6 +32,9 @@
                 "name": "openfed-ckeditor-plugins/uploadimage",
                 "version": "4.6.2",
                 "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
                 "dist": {
                     "url": "http://download.ckeditor.com/uploadimage/releases/uploadimage_4.6.2.zip",
                     "type": "zip"
@@ -44,6 +47,9 @@
                 "name": "openfed-ckeditor-plugins/uploadwidget",
                 "version": "4.6.2",
                 "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
                 "dist": {
                     "url": "http://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.6.2.zip",
                     "type": "zip"
@@ -56,6 +62,9 @@
                 "name": "openfed-ckeditor-plugins/filetools",
                 "version": "4.6.2",
                 "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
                 "dist": {
                     "url": "http://download.ckeditor.com/filetools/releases/filetools_4.6.2.zip",
                     "type": "zip"
@@ -67,7 +76,10 @@
              "package": {
                  "name": "openfed-ckeditor-plugins/notification",
                  "version": "4.6.2",
-                "type": "openfed-ckeditor-plugin",
+                 "type": "openfed-ckeditor-plugin",
+                 "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                 },
                  "dist": {
                      "url": "http://download.ckeditor.com/notification/releases/notification_4.6.2.zip",
                      "type": "zip"
@@ -80,6 +92,9 @@
                 "name": "openfed-ckeditor-plugins/notificationaggregator",
                 "version": "4.6.2",
                 "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
                 "dist": {
                     "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.6.2.zip",
                     "type": "zip"
@@ -92,7 +107,7 @@
         "oomphinc/composer-installers-extender": "^1.1",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
-        "openfed/openfed8": "^1.0"
+        "openfed/openfed8": "8.1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -128,9 +143,9 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
-    "extra": { 
+    "extra": {
         "installer-types": [
-            "openfed-ckeditor-plugin"
+           "openfed-ckeditor-plugin"
         ],
         "installer-paths": {
             "docroot/core": [
