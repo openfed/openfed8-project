@@ -147,6 +147,13 @@
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
+            ],
+            "docroot/libraries/ckeditor/plugins/{$name}" : [
+                "ckeditor/plugins/uploadimage",
+                "ckeditor/plugins/uploadwidget",
+                "ckeditor/plugins/filetools",
+                "ckeditor/plugins/notification",
+                "ckeditor/plugins/notificationaggregator",
             ]
         },
         "enable-patching": true
