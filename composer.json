@@ -150,5 +150,8 @@
             ]
         },
         "enable-patching": true
+    },
+    "config": {
+      "secure-http": false
     }
 }
