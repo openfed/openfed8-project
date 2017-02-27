@@ -89,6 +89,7 @@
     ],
     "require": {
         "composer/installers": "^1.2",
+        "oomphinc/composer-installers-extender": "^1.1",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
         "openfed/openfed8": "^1.0"
