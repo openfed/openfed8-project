@@ -29,6 +29,18 @@
         {
             "type": "package",
             "package": {
+                "name": "ckeditor/plugins/uploadimage",
+                "version": "4.6.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/uploadimage/releases/uploadimage_4.6.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "ckeditor/plugins/uploadwidget",
                 "version": "4.6.2",
                 "type": "drupal-library",
