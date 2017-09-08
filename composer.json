@@ -104,9 +104,9 @@
         {
            "type": "package",
            "package": {
-             "name": "openfed-ckeditor-plugins/templates",
+             "name": "openfed-ckeditor-templates/templates",
              "version": "4.6.2",
-             "type": "openfed-ckeditor-plugin",
+             "type": "openfed-ckeditor-template",
              "require": {
                "oomphinc/composer-installers-extender": "^1.1"
              },
