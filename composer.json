@@ -100,6 +100,21 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+           "type": "package",
+           "package": {
+             "name": "openfed-ckeditor-plugins/templates",
+             "version": "4.6.2",
+             "type": "openfed-ckeditor-plugin",
+             "require": {
+               "oomphinc/composer-installers-extender": "^1.1"
+             },
+             "dist": {
+               "url": "http://download.ckeditor.com/templates/releases/templates_4.6.2.zip",
+               "type": "zip"
+             }
+           }
         }
     ],
     "require": {
