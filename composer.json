@@ -36,7 +36,7 @@
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "http://download.ckeditor.com/uploadimage/releases/uploadimage_4.6.2.zip",
+                    "url": "http://download.ckeditor.com/uploadimage/releases/uploadimage_4.7.2.zip",
                     "type": "zip"
                 }
             }
@@ -51,7 +51,7 @@
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "http://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.6.2.zip",
+                    "url": "http://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.7.2.zip",
                     "type": "zip"
                 }
             }
@@ -66,7 +66,7 @@
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "http://download.ckeditor.com/filetools/releases/filetools_4.6.2.zip",
+                    "url": "http://download.ckeditor.com/filetools/releases/filetools_4.7.2.zip",
                     "type": "zip"
                 }
             }
@@ -81,7 +81,7 @@
                      "oomphinc/composer-installers-extender": "^1.1"
                  },
                  "dist": {
-                     "url": "http://download.ckeditor.com/notification/releases/notification_4.6.2.zip",
+                     "url": "http://download.ckeditor.com/notification/releases/notification_4.7.2.zip",
                      "type": "zip"
                  }
              }
@@ -96,7 +96,7 @@
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.6.2.zip",
+                    "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.7.2.zip",
                     "type": "zip"
                 }
             }
@@ -111,18 +111,18 @@
                "oomphinc/composer-installers-extender": "^1.1"
              },
              "dist": {
-               "url": "http://download.ckeditor.com/templates/releases/templates_4.6.2.zip",
+               "url": "http://download.ckeditor.com/templates/releases/templates_4.7.2.zip",
                "type": "zip"
              }
            }
         }
     ],
     "require": {
+        "openfed/openfed8": "8.2.x-dev",
+        "cweagans/composer-patches": "^1.6",
         "composer/installers": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1",
-        "drupal-composer/drupal-scaffold": "^2.2",
-        "cweagans/composer-patches": "~1.0",
-        "openfed/openfed8": "^1.0"
+        "drupal-composer/drupal-scaffold": "^2.2"
     },
     "require-dev": {
         "behat/mink": "~1.7",
