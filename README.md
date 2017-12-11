@@ -11,7 +11,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project openfed/openfed8-project:1.0 MYPROJECT
+composer create-project openfed/openfed8-project:4.0 MYPROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your
