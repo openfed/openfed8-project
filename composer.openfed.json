@@ -1,0 +1,71 @@
+{
+    "name": "openfed/openfed8-project",
+    "description": "Project template for Drupal 8 sites built with the Openfed distribution.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Blue4You",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "oomphinc/composer-installers-extender": "^1.1",
+        "openfed/openfed8": "8.6.x-dev"
+    },
+    "require-dev": { },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        ],
+        "post-update-cmd": [
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/openfed": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:openfed-ckeditor-template"
+            ],
+            "docroot/libraries/ckeditor/plugins/{$name}" : [
+                "type:openfed-ckeditor-plugin"
+            ]
+        },
+        "enable-patching": true
+    },
+    "config": {
+        "secure-http": false,
+        "platform": {
+            "php": "7.1"
+        } 
+    }
+}

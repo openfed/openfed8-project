@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
+            "name": "Blue4You",
             "role": ""
         }
     ],
@@ -13,165 +13,29 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jackmoore/colorbox",
-                "version": "1.6.4",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/jackmoore/colorbox/archive/1.6.4.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "openfed-ckeditor-plugins/uploadimage",
-                "version": "4.7.2",
-                "type": "openfed-ckeditor-plugin",
-                "require": {
-                     "oomphinc/composer-installers-extender": "^1.1"
-                },
-                "dist": {
-                    "url": "http://download.ckeditor.com/uploadimage/releases/uploadimage_4.7.2.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "openfed-ckeditor-plugins/uploadwidget",
-                "version": "4.7.2",
-                "type": "openfed-ckeditor-plugin",
-                "require": {
-                     "oomphinc/composer-installers-extender": "^1.1"
-                },
-                "dist": {
-                    "url": "http://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.7.2.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "openfed-ckeditor-plugins/filetools",
-                "version": "4.7.2",
-                "type": "openfed-ckeditor-plugin",
-                "require": {
-                     "oomphinc/composer-installers-extender": "^1.1"
-                },
-                "dist": {
-                    "url": "http://download.ckeditor.com/filetools/releases/filetools_4.7.2.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-             "type": "package",
-             "package": {
-                 "name": "openfed-ckeditor-plugins/notification",
-                 "version": "4.7.2",
-                 "type": "openfed-ckeditor-plugin",
-                 "require": {
-                     "oomphinc/composer-installers-extender": "^1.1"
-                 },
-                 "dist": {
-                     "url": "http://download.ckeditor.com/notification/releases/notification_4.7.2.zip",
-                     "type": "zip"
-                 }
-             }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "openfed-ckeditor-plugins/notificationaggregator",
-                "version": "4.7.2",
-                "type": "openfed-ckeditor-plugin",
-                "require": {
-                     "oomphinc/composer-installers-extender": "^1.1"
-                },
-                "dist": {
-                    "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.7.2.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-           "type": "package",
-           "package": {
-             "name": "openfed-ckeditor-templates/templates",
-             "version": "4.7.2",
-             "type": "openfed-ckeditor-template",
-             "require": {
-               "oomphinc/composer-installers-extender": "^1.1"
-             },
-             "dist": {
-               "url": "http://download.ckeditor.com/templates/releases/templates_4.7.2.zip",
-               "type": "zip"
-             }
-           }
         }
     ],
     "require": {
-        "openfed/openfed8": "^6.0",
-        "cweagans/composer-patches": "^1.6",
-        "composer/installers": "^1.2",
-        "oomphinc/composer-installers-extender": "^1.1"
+        "wikimedia/composer-merge-plugin": "^1.4"
     },
-    "require-dev": { },
     "conflict": {
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "scripts": {
-      "post-install-cmd": [
-        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-      ],
-      "post-update-cmd": [
-        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-      ]
-    },
     "extra": {
-        "installer-types": [
-           "openfed-ckeditor-plugin",
-           "openfed-ckeditor-template"
-        ],
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
+        "merge-plugin": {
+            "require": [
+                "composer.libraries.json",
+                "composer.openfed.json"
             ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "type:openfed-ckeditor-template"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/profiles/contrib/openfed": [
-                "type:drupal-profile"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "docroot/libraries/ckeditor/plugins/{$name}" : [
-                "type:openfed-ckeditor-plugin"
-            ]
-        },
-        "enable-patching": true
-    },
-    "config": {
-      "secure-http": false,
-      "platform": {
-        "php": "7.0.30"
-      } 
+            "recurse": true,
+            "replace": false,
+            "ignore-duplicates": false,
+            "merge-dev": true,
+            "merge-extra": true,
+            "merge-extra-deep": true,
+            "merge-scripts": true
+        }
     }
 }

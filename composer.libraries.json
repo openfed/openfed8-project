@@ -1,0 +1,130 @@
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jackmoore/colorbox",
+                "version": "1.6.4",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/jackmoore/colorbox/archive/1.6.4.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "openfed-ckeditor-plugins/uploadimage",
+                "version": "4.7.2",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "http://download.ckeditor.com/uploadimage/releases/uploadimage_4.7.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "openfed-ckeditor-plugins/uploadwidget",
+                "version": "4.7.2",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "http://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.7.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "openfed-ckeditor-plugins/filetools",
+                "version": "4.7.2",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "http://download.ckeditor.com/filetools/releases/filetools_4.7.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+             "type": "package",
+             "package": {
+                 "name": "openfed-ckeditor-plugins/notification",
+                 "version": "4.7.2",
+                 "type": "openfed-ckeditor-plugin",
+                 "require": {
+                     "oomphinc/composer-installers-extender": "^1.1"
+                 },
+                 "dist": {
+                     "url": "http://download.ckeditor.com/notification/releases/notification_4.7.2.zip",
+                     "type": "zip"
+                 }
+             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "openfed-ckeditor-plugins/notificationaggregator",
+                "version": "4.7.2",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                    "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "http://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.7.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "openfed-ckeditor-templates/templates",
+                "version": "4.7.2",
+                "type": "openfed-ckeditor-template",
+                "require": {
+                    "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "http://download.ckeditor.com/templates/releases/templates_4.7.2.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/find",
+                "version": "4.8.0",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                    "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "extra": {
+                    "installer-name": "find"
+                },
+                "dist": {
+                    "url": "https://download.ckeditor.com/find/releases/find_4.8.0.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "extra": {
+        "installer-types": [
+            "openfed-ckeditor-plugin",
+            "openfed-ckeditor-template"
+        ]
+    }
+}
