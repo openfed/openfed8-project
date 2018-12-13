@@ -30,9 +30,6 @@
     "scripts": {
         "post-install-cmd": [
             "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
-        ],
-        "post-update-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
         ]
     },
     "extra": {
@@ -63,7 +60,6 @@
         "enable-patching": true
     },
     "config": {
-        "secure-http": false,
         "platform": {
             "php": "7.1"
         } 
