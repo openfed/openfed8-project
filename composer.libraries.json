@@ -106,16 +106,43 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/find",
-                "version": "4.8.0",
+                "version": "4.7.3",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
-                "extra": {
-                    "installer-name": "find"
+                "dist": {
+                    "url": "https://download.ckeditor.com/find/releases/find_4.7.3.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/link",
+                "version": "4.7.3",
+                "type": "openfed-ckeditor-plugin",
+                "require": {
+                    "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/find/releases/find_4.8.0.zip",
+                    "url": "https://download.ckeditor.com/link/releases/link_4.7.3.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/fakeobjects",
+                "version": "4.7.3",
+                "type": "drupal-library",
+                "require": {
+                    "oomphinc/composer-installers-extender": "^1.1"
+                },
+                "dist": {
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.7.3.zip",
                     "type": "zip"
                 }
             }
