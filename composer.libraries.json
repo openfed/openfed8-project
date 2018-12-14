@@ -15,7 +15,7 @@
         {
             "type": "package",
             "package": {
-                "name": "openfed-ckeditor-plugins/uploadimage",
+                "name": "ckeditor/uploadimage",
                 "version": "4.7.2",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
@@ -30,7 +30,7 @@
         {
             "type": "package",
             "package": {
-                "name": "openfed-ckeditor-plugins/uploadwidget",
+                "name": "ckeditor/uploadwidget",
                 "version": "4.7.2",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
@@ -45,7 +45,7 @@
         {
             "type": "package",
             "package": {
-                "name": "openfed-ckeditor-plugins/filetools",
+                "name": "ckeditor/filetools",
                 "version": "4.7.2",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
@@ -60,7 +60,7 @@
         {
              "type": "package",
              "package": {
-                 "name": "openfed-ckeditor-plugins/notification",
+                 "name": "ckeditor/notification",
                  "version": "4.7.2",
                  "type": "openfed-ckeditor-plugin",
                  "require": {
@@ -75,7 +75,7 @@
         {
             "type": "package",
             "package": {
-                "name": "openfed-ckeditor-plugins/notificationaggregator",
+                "name": "ckeditor/notificationaggregator",
                 "version": "4.7.2",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
@@ -90,7 +90,7 @@
         {
             "type": "package",
             "package": {
-                "name": "openfed-ckeditor-templates/templates",
+                "name": "ckeditor/templates",
                 "version": "4.7.2",
                 "type": "openfed-ckeditor-template",
                 "require": {
@@ -122,7 +122,7 @@
             "package": {
                 "name": "ckeditor/link",
                 "version": "4.7.3",
-                "type": "openfed-ckeditor-plugin",
+                "type": "drupal-library",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
@@ -146,6 +146,24 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+          "type": "package",
+          "package": {
+            "name": "w8tcha/codemirror",
+            "version": "1.17.8",
+            "type": "drupal-library",
+            "require": {
+               "oomphinc/composer-installers-extender": "^1.1"
+            },
+            "extra": {
+              "installer-name": "ckeditor_codemirror"
+            },
+            "dist": {
+              "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/archive/untagged-f790a6bee2e01b538b13.zip",
+              "type": "zip"
+            }
+          }
         }
     ],
     "extra": {
