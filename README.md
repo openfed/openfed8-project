@@ -30,7 +30,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project openfed/openfed8-project:^6.0 MYPROJECT
+composer create-project openfed/openfed8-project:^7.0 MYPROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your
@@ -44,8 +44,3 @@ composer require drupal/devel:~1.0
 The `composer create-project` command passes ownership of all files to the
 project that is created. You should create a new git repository, and commit
 all files not excluded by the .gitignore file.
-
-
-## Update from Openfed8-project <=8.5.x
-
-Copy all .json files to your project folder and make sure that your project required packages are copied to the new composer.json file.
