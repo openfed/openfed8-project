@@ -19,7 +19,7 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "oomphinc/composer-installers-extender": "^1.1",
-        "openfed/openfed8": "6.x-dev"
+        "openfed/openfed8": "8.6.x-dev"
     },
     "require-dev": { },
     "conflict": {
