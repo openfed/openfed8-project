@@ -44,3 +44,23 @@ composer require drupal/devel:~1.0
 The `composer create-project` command passes ownership of all files to the
 project that is created. You should create a new git repository, and commit
 all files not excluded by the .gitignore file.
+
+## Troubleshooting
+
+### Memory limit errors
+
+When running "composer install" you may get some memory limit issues. This is due to the composer dependency resolver since we have a big list of dependencies. 
+To bypass this issue, you have 3 options:
+
+#### option 1
+
+Temporarely increase the memory limit as described at https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+
+#### option 2
+
+If you are creating the project for the first time, use the recommended installation procedure by using "composer create-project" command.
+
+#### option 3
+
+Run "composer update" twice. At first it will throw the same error but on the second attempt it will run successfully.
+
