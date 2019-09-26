@@ -58,10 +58,5 @@
             ]
         },
         "enable-patching": true
-    },
-    "config": {
-        "platform": {
-            "php": "7.1"
-        } 
     }
 }
