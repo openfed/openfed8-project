@@ -57,6 +57,9 @@
                 "type:openfed-ckeditor-plugin"
             ]
         },
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "enable-patching": true
     }
 }
