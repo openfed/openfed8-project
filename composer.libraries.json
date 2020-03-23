@@ -16,13 +16,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/uploadimage",
-                "version": "4.7.2",
+                "version": "4.14",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/uploadimage/releases/uploadimage_4.7.2.zip",
+                    "url": "https://download.ckeditor.com/uploadimage/releases/uploadimage_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -31,13 +31,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/uploadwidget",
-                "version": "4.7.2",
+                "version": "4.14",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.7.2.zip",
+                    "url": "https://download.ckeditor.com/uploadwidget/releases/uploadwidget_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -46,13 +46,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/filetools",
-                "version": "4.7.2",
+                "version": "4.14",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                      "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/filetools/releases/filetools_4.7.2.zip",
+                    "url": "https://download.ckeditor.com/filetools/releases/filetools_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -61,13 +61,13 @@
              "type": "package",
              "package": {
                  "name": "ckeditor/notification",
-                 "version": "4.7.2",
+                 "version": "4.14",
                  "type": "openfed-ckeditor-plugin",
                  "require": {
                      "oomphinc/composer-installers-extender": "^1.1"
                  },
                  "dist": {
-                     "url": "https://download.ckeditor.com/notification/releases/notification_4.7.2.zip",
+                     "url": "https://download.ckeditor.com/notification/releases/notification_4.14.zip",
                      "type": "zip"
                  }
              }
@@ -76,13 +76,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/notificationaggregator",
-                "version": "4.7.2",
+                "version": "4.14",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.7.2.zip",
+                    "url": "https://download.ckeditor.com/notificationaggregator/releases/notificationaggregator_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -91,13 +91,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/templates",
-                "version": "4.7.2",
+                "version": "4.14",
                 "type": "openfed-ckeditor-template",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/templates/releases/templates_4.7.2.zip",
+                    "url": "https://download.ckeditor.com/templates/releases/templates_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -106,13 +106,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/find",
-                "version": "4.7.3",
+                "version": "4.14",
                 "type": "openfed-ckeditor-plugin",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/find/releases/find_4.7.3.zip",
+                    "url": "https://download.ckeditor.com/find/releases/find_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -121,13 +121,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/link",
-                "version": "4.7.3",
+                "version": "4.14",
                 "type": "drupal-library",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/link/releases/link_4.7.3.zip",
+                    "url": "https://download.ckeditor.com/link/releases/link_4.14.zip",
                     "type": "zip"
                 }
             }
@@ -136,13 +136,13 @@
             "type": "package",
             "package": {
                 "name": "ckeditor/fakeobjects",
-                "version": "4.7.3",
+                "version": "4.14",
                 "type": "drupal-library",
                 "require": {
                     "oomphinc/composer-installers-extender": "^1.1"
                 },
                 "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.7.3.zip",
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.zip",
                     "type": "zip"
                 }
             }
