@@ -18,7 +18,7 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "oomphinc/composer-installers-extender": "^1.1",
+        "oomphinc/composer-installers-extender": "^2.0",
         "openfed/openfed8": "8.9.x-dev"
     },
     "require-dev": { },
@@ -29,7 +29,7 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {

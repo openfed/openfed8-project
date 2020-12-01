@@ -65,6 +65,11 @@
                 "type:openfed-ckeditor-plugin"
             ]
         },
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "./docroot"
+            }
+        },
         "enable-patching": true
     },
     "config": {
