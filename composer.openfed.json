@@ -19,7 +19,7 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "oomphinc/composer-installers-extender": "^2.0",
-        "openfed/openfed8": "^9.0"
+        "openfed/openfed8": "^10.0"
     },
     "require-dev": { },
     "conflict": {
@@ -30,6 +30,9 @@
     "scripts": {
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "composer install"
         ]
     },
     "extra": {
