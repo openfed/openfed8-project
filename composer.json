@@ -23,6 +23,11 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer"
+        ]
+    },
     "extra": {
         "merge-plugin": {
             "require": [

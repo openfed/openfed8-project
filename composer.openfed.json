@@ -3,6 +3,7 @@
     "description": "Project template for Drupal 8 sites built with the Openfed distribution.",
     "type": "project",
     "license": "GPL-2.0-or-later",
+    "version" : "10.0-alpha1",
     "authors": [
         {
             "name": "Blue4You",
@@ -28,6 +29,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "pre-update-cmd": [
+            "Openfed\\composer\\OpenfedValidations::validateUpdate810"
+        ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
