@@ -34,6 +34,7 @@
     "prefer-stable": true,
     "scripts": {
         "pre-update-cmd": [
+            "drush cr",
             "Openfed\\composer\\OpenfedValidations::validateUpdate810"
         ],
         "post-install-cmd": [
