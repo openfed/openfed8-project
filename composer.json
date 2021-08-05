@@ -31,7 +31,6 @@
     "extra": {
         "merge-plugin": {
             "require": [
-                "composer.libraries.json",
                 "composer.openfed.json"
             ],
             "recurse": true,
