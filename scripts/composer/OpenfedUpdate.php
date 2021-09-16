@@ -46,7 +46,6 @@ class OpenfedUpdate{
       curl_setopt($ch_start, CURLOPT_HEADER, 0);
       curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, true);
       curl_setopt($ch_start, CURLOPT_AUTOREFERER, true);
-      curl_setopt($ch_start, CURLOPT_BINARYTRANSFER,true);
       curl_setopt($ch_start, CURLOPT_TIMEOUT, 10);
       curl_setopt($ch_start, CURLOPT_SSL_VERIFYHOST, 0);
       curl_setopt($ch_start, CURLOPT_SSL_VERIFYPEER, 0);
@@ -149,5 +148,5 @@ class OpenfedUpdate{
     $latest_openfed_version = explode("\n", trim(shell_exec("git -c 'versionsort.suffix=-' ls-remote --tags --sort='-v:refname' " . self::$openfed8Repo . " | cut --delimiter='/' --fields=3 | grep -v -")));
     self::$latestOpenfedVersion = $latest_openfed_version[0];
   }
-  
+
 }
