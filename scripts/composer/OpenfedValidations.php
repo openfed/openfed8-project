@@ -58,7 +58,7 @@ class OpenfedValidations {
     $latest_openfed8_project = explode("\n",trim(shell_exec("git -c 'versionsort.suffix=-' ls-remote --tags --sort='-v:refname' https://github.com/openfed/openfed8-project | cut --delimiter='/' --fields=3 | grep -v -")));
 
     if(version_compare($latest_openfed8_project[0], $current_version) > 0) {
-      throw new \ErrorException("There's a new version of Openfed8 Project available, please update composer files.");
+      throw new \ErrorException("There's a new version of Openfed8 Project available, please update composer files. You can easily do it by running 'composer run-script openfed-update'.");
     }
 
   }

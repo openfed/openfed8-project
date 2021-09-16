@@ -138,6 +138,12 @@ class OpenfedUpdate{
     $composer_openfed = json_decode(file_get_contents('composer.openfed.json'), TRUE);
     $current_version = $composer_openfed['require']['openfed/openfed8'];
 
+    // If current version is dev, we don't need to check if there's a newer
+    // version.
+    if (strpos($current_version, 'dev') !== FALSE) {
+      return false;
+    }
+
     return version_compare(self::$latestOpenfedVersion, $current_version, '>');
   }
 
