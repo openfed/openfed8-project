@@ -23,11 +23,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "autoload": {
-        "classmap": [
-            "scripts/composer"
-        ]
-    },
     "extra": {
         "merge-plugin": {
             "require": [
@@ -40,41 +35,7 @@
             "merge-extra": true,
             "merge-extra-deep": true,
             "merge-scripts": true
-        },
-        "installer-types": [
-            "openfed-ckeditor-plugin",
-            "openfed-ckeditor-template"
-        ],
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/profiles/contrib/openfed": [
-                "type:drupal-profile"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "type:openfed-ckeditor-template"
-            ],
-            "docroot/libraries/ckeditor/plugins/{$name}" : [
-                "type:openfed-ckeditor-plugin"
-            ]
-        },
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "./docroot"
-            }
-        },
-        "enable-patching": true
+        }
     },
     "config": {
         "platform": {

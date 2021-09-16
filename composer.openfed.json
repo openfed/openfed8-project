@@ -3,7 +3,6 @@
     "description": "Project template for Drupal 8 sites built with the Openfed distribution.",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "version" : "10.0-alpha1",
     "authors": [
         {
             "name": "Blue4You",
@@ -27,14 +26,13 @@
         "openfed/openfed8": "8.10.x-dev"
     },
     "require-dev": { },
-    "conflict": {
-        "drupal/drupal": "*"
+    "autoload": {
+      "classmap": [
+        "scripts/composer"
+      ]
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "pre-update-cmd": [
-            "drush cr",
             "Openfed\\composer\\OpenfedValidations::validateUpdate810"
         ],
         "post-install-cmd": [
@@ -42,35 +40,51 @@
         ],
         "post-update-cmd": [
             "composer install"
+        ],
+        "openfed-update": [
+          "Openfed\\composer\\OpenfedUpdate::update"
         ]
     },
     "extra": {
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/profiles/contrib/openfed": [
-                "type:drupal-profile"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "type:openfed-ckeditor-template"
-            ],
-            "docroot/libraries/ckeditor/plugins/{$name}" : [
-                "type:openfed-ckeditor-plugin"
-            ]
-        },
         "patchLevel": {
-            "drupal/core": "-p2"
+          "drupal/core": "-p2"
+        },
+        "installer-types": [
+          "openfed-ckeditor-plugin",
+          "openfed-ckeditor-template",
+          "simplesamlphp-module"
+        ],
+        "installer-paths": {
+          "docroot/core": [
+            "type:drupal-core"
+          ],
+          "docroot/modules/contrib/{$name}": [
+            "type:drupal-module"
+          ],
+          "docroot/profiles/contrib/openfed": [
+            "type:drupal-profile"
+          ],
+          "docroot/themes/contrib/{$name}": [
+            "type:drupal-theme"
+          ],
+          "drush/contrib/{$name}": [
+            "type:drupal-drush"
+          ],
+          "docroot/libraries/{$name}": [
+            "type:drupal-library",
+            "type:openfed-ckeditor-template"
+          ],
+          "docroot/libraries/ckeditor/plugins/{$name}": [
+            "type:openfed-ckeditor-plugin"
+          ],
+          "docroot/libraries/simplesamlphp/modules/{$name}": [
+            "type:simplesamlphp-module"
+          ]
+        },
+        "drupal-scaffold": {
+          "locations": {
+            "web-root": "./docroot"
+          }
         },
         "enable-patching": true
     }
