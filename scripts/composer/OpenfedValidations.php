@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Openfed\composer\OpenfedValidations.
- */
-
 namespace Openfed\composer;
 
 use Composer\Script\Event;
@@ -16,20 +11,34 @@ class OpenfedValidations {
 
   public static function validateUpdate810(Event $event) {
 
+    // This check will assure that other checks will be performed only if this
+    // is a Drupal site, otherwise they will be ignored (like for first time
+    // installations).
     if (!self::_isDrupalSite()) {
       return;
     }
 
+    // Check if there's a new Openfed version and prevent update without
+    // changing composer files.
     self::_checkProjectVersion();
 
+    // Some modules were removed from Openfed 8.10 and they should be deleted
+    // before updating to this version.
     self::_checkDeprecatedModules();
 
+    // Twig Tweak module was updated so, if used, it should be checked for
+    // compatibility issues.
     self::_checkTwigTweak2Compatibility();
 
     // self::_checkTwigTweak3Compatibility();
 
   }
 
+  /**
+   * Check if current site is a Drupal site.
+   *
+   * @return bool
+   */
   private static function _isDrupalSite() {
     $output = trim(shell_exec('drush status --field="Drupal bootstrap"'));
     if (empty($output)) {
@@ -38,9 +47,14 @@ class OpenfedValidations {
     return true;
   }
 
+  /**
+   * Checks if there's a more recent version of Openfed.
+   *
+   * @throws \ErrorException
+   */
   private static function _checkProjectVersion() {
     $composer_openfed = json_decode(file_get_contents('composer.openfed.json'), true);
-    $current_version = $composer_openfed['version'];
+    $current_version = $composer_openfed['require']['openfed/openfed8'];
     $latest_openfed8_project = explode("\n",trim(shell_exec("git -c 'versionsort.suffix=-' ls-remote --tags --sort='-v:refname' https://github.com/openfed/openfed8-project | cut --delimiter='/' --fields=3 | grep -v -")));
 
     if(version_compare($latest_openfed8_project[0], $current_version) > 0) {
@@ -49,6 +63,12 @@ class OpenfedValidations {
 
   }
 
+  /**
+   * Checks if deprecated modules are enabled end stops update if that's the
+   * case.
+   *
+   * @throws \ErrorException
+   */
   private static function _checkDeprecatedModules() {
     $modules_to_check = [
       'toolbar_themes',
@@ -68,6 +88,11 @@ class OpenfedValidations {
     }
   }
 
+  /**
+   * Checks if Twig Tweak is enabled.
+   *
+   * @return bool
+   */
   private static function  _isTwigTweakEnabled() {
     $module = 'twig_tweak';
     $output = trim(shell_exec('drush pml --field="status" --filter="' . $module . '"'));
@@ -77,18 +102,30 @@ class OpenfedValidations {
     return false;
   }
 
+  /**
+   * Initiates Drupal container.
+   *
+   * @throws \Exception
+   */
   private static function _initDrupalContainer() {
     $autoloader = require_once getcwd() . '/docroot/autoload.php';
     $request = Request::createFromGlobals();
     $kernel = DrupalKernel::createFromRequest($request, $autoloader, 'prod');
-    $kernel->prepareLegacyRequest($request);
+    $kernel->boot();
+    $kernel->preHandle($request);
+    if (PHP_SAPI !== 'cli') {
+      $request->setSession($kernel->getContainer()->get('session'));
+    }
   }
 
+  /**
+   * Check template for Twig Tweak 2.x compatibility issues.
+   * See https://www.drupal.org/docs/contributed-modules/twig-tweak/migrating-to-twig-tweak-2x
+   *
+   * @throws \ErrorException
+   */
   private static function _checkTwigTweak2Compatibility() {
     if (self::_isTwigTweakEnabled()) {
-      // Check template for Twig Tweak 2.x compatibility issues.
-      // See https://www.drupal.org/docs/contributed-modules/twig-tweak/migrating-to-twig-tweak-2x
-
       self::_initDrupalContainer();
 
       // 1. Check Rendering Blocks.
@@ -139,6 +176,12 @@ class OpenfedValidations {
     }
   }
 
+  /**
+   * Check template for Twig Tweak 3.x compatibility issues.
+   * See https://git.drupalcode.org/project/twig_tweak/-/blob/3.x/docs/migration-to-3.x.md
+   *
+   * @throws \ErrorException
+   */
   private static function _checkTwigTweak3Compatibility() {
     if (self::_isTwigTweakEnabled()) {
       // TODO: for Openfed 11.
