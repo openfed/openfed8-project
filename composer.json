@@ -18,9 +18,6 @@
     "require": {
         "wikimedia/composer-merge-plugin": "^2.0"
     },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {
@@ -35,11 +32,6 @@
             "merge-extra": true,
             "merge-extra-deep": true,
             "merge-scripts": true
-        }
-    },
-    "config": {
-        "platform": {
-            "php": "7.3"
         }
     }
 }

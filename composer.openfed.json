@@ -20,9 +20,7 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6",
-        "oomphinc/composer-installers-extender": "^2.0",
+        "php": "^7.3",
         "openfed/openfed8": "8.10.x-dev"
     },
     "require-dev": { },
