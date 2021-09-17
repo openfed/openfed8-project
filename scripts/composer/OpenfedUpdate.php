@@ -5,7 +5,7 @@ namespace Openfed\composer;
 use Composer\Script\Event;
 use ZipArchive;
 
-class OpenfedUpdate{
+class OpenfedUpdate {
 
   /**
    * @var string
@@ -42,23 +42,22 @@ class OpenfedUpdate{
 
       $ch_start = curl_init();
       curl_setopt($ch_start, CURLOPT_URL, $url);
-      curl_setopt($ch_start, CURLOPT_FAILONERROR, true);
+      curl_setopt($ch_start, CURLOPT_FAILONERROR, TRUE);
       curl_setopt($ch_start, CURLOPT_HEADER, 0);
-      curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, true);
-      curl_setopt($ch_start, CURLOPT_AUTOREFERER, true);
+      curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, TRUE);
+      curl_setopt($ch_start, CURLOPT_AUTOREFERER, TRUE);
       curl_setopt($ch_start, CURLOPT_TIMEOUT, 10);
       curl_setopt($ch_start, CURLOPT_SSL_VERIFYHOST, 0);
       curl_setopt($ch_start, CURLOPT_SSL_VERIFYPEER, 0);
       curl_setopt($ch_start, CURLOPT_FILE, $zip_resource);
       $page = curl_exec($ch_start);
-      if(!$page)
-      {
-        echo "Error :- ".curl_error($ch_start);
+      if (!$page) {
+        echo "Error :- " . curl_error($ch_start);
       }
       curl_close($ch_start);
 
       $zip = new ZipArchive;
-      if($zip->open($zipFile) != "true") {
+      if ($zip->open($zipFile) != "true") {
         throw new \ErrorException("Error :- Unable to open the Zip File.");
       }
 
@@ -85,16 +84,16 @@ class OpenfedUpdate{
    * @param $dst
    *  Destination directory.
    */
-  private static function _recurseCopy($src,$dst) {
+  private static function _recurseCopy($src, $dst) {
     $dir = opendir($src);
     @mkdir($dst);
-    while(false !== ( $file = readdir($dir)) ) {
-      if (( $file != '.' ) && ( $file != '..' )) {
-        if ( is_dir($src . DIRECTORY_SEPARATOR . $file) ) {
-          recurse_copy($src . DIRECTORY_SEPARATOR . $file,$dst . DIRECTORY_SEPARATOR . $file);
+    while (FALSE !== ($file = readdir($dir))) {
+      if (($file != '.') && ($file != '..')) {
+        if (is_dir($src . DIRECTORY_SEPARATOR . $file)) {
+          recurse_copy($src . DIRECTORY_SEPARATOR . $file, $dst . DIRECTORY_SEPARATOR . $file);
         }
         else {
-          copy($src . DIRECTORY_SEPARATOR . $file,$dst . DIRECTORY_SEPARATOR . $file);
+          copy($src . DIRECTORY_SEPARATOR . $file, $dst . DIRECTORY_SEPARATOR . $file);
         }
       }
     }
@@ -112,7 +111,7 @@ class OpenfedUpdate{
    */
   public static function _deleteDirectory($dir) {
     if (!file_exists($dir)) {
-      return true;
+      return TRUE;
     }
     if (!is_dir($dir)) {
       return unlink($dir);
@@ -122,7 +121,7 @@ class OpenfedUpdate{
         continue;
       }
       if (!self::_deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
-        return false;
+        return FALSE;
       }
     }
     return rmdir($dir);
@@ -141,7 +140,7 @@ class OpenfedUpdate{
     // If current version is dev, we don't need to check if there's a newer
     // version.
     if (strpos($current_version, 'dev') !== FALSE) {
-      return false;
+      return FALSE;
     }
 
     return version_compare(self::$latestOpenfedVersion, $current_version, '>');

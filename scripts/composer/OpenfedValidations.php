@@ -18,9 +18,10 @@ class OpenfedValidations {
       return;
     }
 
-    // Check if there's a new Openfed version and prevent update without
-    // changing composer files.
-    self::_checkProjectVersion();
+    // We should run the validations only on Openfed 8.x-10.0 or higher.
+    if (!self::_checkProjectVersion()) {
+      return;
+    }
 
     // Some modules were removed from Openfed 8.10 and they should be deleted
     // before updating to this version.
@@ -48,19 +49,21 @@ class OpenfedValidations {
   }
 
   /**
-   * Checks if there's a more recent version of Openfed.
+   * Checks if the current version is at least Openfed8 10.0.
    *
-   * @throws \ErrorException
+   * @return bool
+   *  Return true if current version is 10.0 or more, false otherwise.
    */
   private static function _checkProjectVersion() {
     $composer_openfed = json_decode(file_get_contents('composer.openfed.json'), true);
     $current_version = $composer_openfed['require']['openfed/openfed8'];
-    $latest_openfed8_project = explode("\n",trim(shell_exec("git -c 'versionsort.suffix=-' ls-remote --tags --sort='-v:refname' https://github.com/openfed/openfed8-project | cut --delimiter='/' --fields=3 | grep -v -")));
-
-    if(version_compare($latest_openfed8_project[0], $current_version) > 0) {
-      throw new \ErrorException("There's a new version of Openfed8 Project available, please update composer files. You can easily do it by running 'composer run-script openfed-update'.");
+    preg_match('/(?:[\d+\.?]+[a-zA-Z0-9-]*)/', $current_version, $matches);
+    // If current version is dev, we should ignore version check.
+    if (strpos($current_version, 'dev') !== FALSE) {
+      return false;
     }
 
+    return version_compare($matches[0],'10.0', '>=');
   }
 
   /**
