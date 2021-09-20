@@ -23,11 +23,6 @@
         "openfed/openfed8": "^10.0"
     },
     "require-dev": { },
-    "autoload": {
-        "classmap": [
-            "scripts/composer"
-        ]
-    },
     "scripts": {
         "pre-update-cmd": [
             "OpenfedProject\\composer\\OpenfedValidations::validateUpdate810"
