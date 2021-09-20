@@ -1,14 +1,24 @@
 <?php
 
-namespace Openfed\composer;
+namespace OpenfedProject\composer;
 
 use Composer\Script\Event;
 use Drupal\Core\DrupalKernel;
 use Symfony\Component\HttpFoundation\Request;
 
-
+/**
+ * A class to do several validations before updating to Openfed 8.x-10.0. This
+ * will help maintainers to do an informed update.
+ *
+ * This file is present in Openfed 8.x-9.11+ so composer can early call it in
+ * Openfed 8.x-10.0 and make a check before having to update Openfed. As such,
+ * this file is not supposed to be used by Openfed 8.x-9.x.
+ */
 class OpenfedValidations {
 
+  /**
+   *
+   */
   public static function validateUpdate810(Event $event) {
 
     // This check will assure that other checks will be performed only if this
@@ -18,10 +28,15 @@ class OpenfedValidations {
       return;
     }
 
-    // We should run the validations only on Openfed 8.x-10.0 or higher.
+    // We should run the validations only on Openfed 8.x-10.0 when we're
+    // updating from Openfed 8.x-9.x.
     if (!self::_checkProjectVersion()) {
       return;
     }
+
+    // Composer.json requires some manual updates, this will check if those
+    // updates were done.
+    self::_checkComposerFile();
 
     // Some modules were removed from Openfed 8.10 and they should be deleted
     // before updating to this version.
@@ -32,7 +47,6 @@ class OpenfedValidations {
     self::_checkTwigTweak2Compatibility();
 
     // self::_checkTwigTweak3Compatibility();
-
   }
 
   /**
@@ -43,27 +57,42 @@ class OpenfedValidations {
   private static function _isDrupalSite() {
     $output = trim(shell_exec('drush status --field="Drupal bootstrap"'));
     if (empty($output)) {
-      return false;
+      return FALSE;
     }
-    return true;
+    return TRUE;
   }
 
   /**
    * Checks if the current version is at least Openfed8 10.0.
    *
    * @return bool
-   *  Return true if current version is 10.0 or more, false otherwise.
+   *   Return true if current version is 10.0 or more, false otherwise.
    */
   private static function _checkProjectVersion() {
-    $composer_openfed = json_decode(file_get_contents('composer.openfed.json'), true);
+    $composer_openfed = json_decode(file_get_contents('composer.openfed.json'), TRUE);
     $current_version = $composer_openfed['require']['openfed/openfed8'];
     preg_match('/(?:[\d+\.?]+[a-zA-Z0-9-]*)/', $current_version, $matches);
     // If current version is dev, we should ignore version check.
     if (strpos($current_version, 'dev') !== FALSE) {
-      return false;
+      return FALSE;
     }
 
-    return version_compare($matches[0],'10.0', '>=');
+    return version_compare($matches[0], '10.0', '>=');
+  }
+
+  /**
+   * Checks if composer file was updated as it should.
+   *
+   * @throws \ErrorException
+   */
+  private static function _checkComposerFile() {
+    // We'll make sure that the composer merge is updated in the old composer
+    // file.
+    $composer_file = json_decode(file_get_contents('composer.json'), TRUE);
+    $merged_composers = array_search('composer.openfed.json', $composer_file['extra']['merge-plugin']['require']);
+    if (strpos($composer_file['require']['wikimedia/composer-merge-plugin'], '^1.') !== FALSE || $merged_composers !== FALSE) {
+      throw new \ErrorException("Your composer.json doesn't seem to be up to date.");
+    }
   }
 
   /**
@@ -81,12 +110,12 @@ class OpenfedValidations {
       'field_default_token',
       'contact_storage_clear',
       'yamlform_clear',
-      'features'
+      'features',
     ];
     foreach ($modules_to_check as $module) {
       $output = trim(shell_exec('drush pml --field="status" --filter="' . $module . '"'));
       if ($output == 'Enabled') {
-        throw new \ErrorException("You can't proceed with Openfed update until you uninstall $module. See Openfed release notes.");
+        throw new \ErrorException("You can't proceed with Openfed update until you uninstall $module. See Openfed 8x-10.0 release notes.");
       }
     }
   }
@@ -96,13 +125,13 @@ class OpenfedValidations {
    *
    * @return bool
    */
-  private static function  _isTwigTweakEnabled() {
+  private static function _isTwigTweakEnabled() {
     $module = 'twig_tweak';
     $output = trim(shell_exec('drush pml --field="status" --filter="' . $module . '"'));
     if ($output == 'Enabled') {
-      return true;
+      return TRUE;
     }
-    return false;
+    return FALSE;
   }
 
   /**
@@ -166,7 +195,6 @@ class OpenfedValidations {
 
       // 4. Check Region wrapper.
       // 5. Check Default field language.
-
       // 6. Check preg_replace filter declaration.
       $search = shell_exec('grep --include \*.twig -r "drupal_set_message" ./docroot/themes/ ./config/');
       $pattern = '/drupal_set_message\([\'|"]/';
@@ -187,7 +215,7 @@ class OpenfedValidations {
    */
   private static function _checkTwigTweak3Compatibility() {
     if (self::_isTwigTweakEnabled()) {
-      // TODO: for Openfed 11.
+      // @todo for Openfed 11.
     }
   }
 

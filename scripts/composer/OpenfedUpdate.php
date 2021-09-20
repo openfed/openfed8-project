@@ -1,6 +1,6 @@
 <?php
 
-namespace Openfed\composer;
+namespace OpenfedProject\composer;
 
 use Composer\Script\Event;
 use ZipArchive;
@@ -65,6 +65,7 @@ class OpenfedUpdate {
       $zip->close();
 
       unlink($zipFile);
+      unlink('composer.libraries.json');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . 'composer.json');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . '.gitignore');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . 'README.md');
@@ -72,7 +73,7 @@ class OpenfedUpdate {
       self::_recurseCopy($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion, '.');
       self::_deleteDirectory($extractPath);
 
-      echo "---- Files updated. You can now run the usual update procedure.\n\n";
+      echo "---- Files updated. You still have to check your composer.json manually.\n\n";
     }
   }
 
