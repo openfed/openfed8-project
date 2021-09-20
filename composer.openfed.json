@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "openfed/openfed8": "8.10.x-dev"
+        "openfed/openfed8": "^10.0"
     },
     "require-dev": { },
     "autoload": {
