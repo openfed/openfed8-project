@@ -3,6 +3,8 @@
 namespace OpenfedProject\composer;
 
 use Composer\Script\Event;
+use Drupal\Core\DrupalKernel;
+use Symfony\Component\HttpFoundation\Request;
 use ZipArchive;
 
 class OpenfedUpdate {
@@ -40,21 +42,13 @@ class OpenfedUpdate {
 
       $zip_resource = fopen($zipFile, "w");
 
-      $ch_start = curl_init();
-      curl_setopt($ch_start, CURLOPT_URL, $url);
-      curl_setopt($ch_start, CURLOPT_FAILONERROR, TRUE);
-      curl_setopt($ch_start, CURLOPT_HEADER, 0);
-      curl_setopt($ch_start, CURLOPT_FOLLOWLOCATION, TRUE);
-      curl_setopt($ch_start, CURLOPT_AUTOREFERER, TRUE);
-      curl_setopt($ch_start, CURLOPT_TIMEOUT, 10);
-      curl_setopt($ch_start, CURLOPT_SSL_VERIFYHOST, 0);
-      curl_setopt($ch_start, CURLOPT_SSL_VERIFYPEER, 0);
-      curl_setopt($ch_start, CURLOPT_FILE, $zip_resource);
-      $page = curl_exec($ch_start);
-      if (!$page) {
-        echo "Error :- " . curl_error($ch_start);
+      self::_initDrupalContainer();
+      /** @var GuzzleHttp\Psr\Response $response */
+      $response = \Drupal::httpClient()->get($url, ['sink' => $zip_resource]);
+
+      if (!$response) {
+        echo "Error :- ";
       }
-      curl_close($ch_start);
 
       $zip = new ZipArchive;
       if ($zip->open($zipFile) != "true") {
@@ -65,7 +59,7 @@ class OpenfedUpdate {
       $zip->close();
 
       unlink($zipFile);
-      unlink('composer.libraries.json');
+      unlink('./composer.libraries.json');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . 'composer.json');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . '.gitignore');
       unlink($extractPath . DIRECTORY_SEPARATOR . 'openfed8-project-' . self::$latestOpenfedVersion . DIRECTORY_SEPARATOR . 'README.md');
@@ -155,4 +149,19 @@ class OpenfedUpdate {
     self::$latestOpenfedVersion = $latest_openfed_version[0];
   }
 
+  /**
+   * Initiates Drupal container.
+   *
+   * @throws \Exception
+   */
+  private static function _initDrupalContainer() {
+    $autoloader = require_once getcwd() . '/docroot/autoload.php';
+    $request = Request::createFromGlobals();
+    $kernel = DrupalKernel::createFromRequest($request, $autoloader, 'prod');
+    $kernel->boot();
+    $kernel->preHandle($request);
+    if (PHP_SAPI !== 'cli') {
+      $request->setSession($kernel->getContainer()->get('session'));
+    }
+  }
 }
