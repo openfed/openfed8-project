@@ -20,7 +20,6 @@
         }
     ],
     "require": {
-        "php": "^7.3",
         "openfed/openfed8": "8.10.x-dev"
     },
     "require-dev": { },

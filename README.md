@@ -2,7 +2,7 @@ This is a project template for Drupal 8 sites built with the Openfed distributio
 
 ## File Structure
 
-There are 3 json files:
+There are 2 json files:
 
 ### composer.json
 
@@ -15,11 +15,9 @@ For more info about **composer-merge-plugin** settings and options check https:/
 
 This will include all Openfed related settings and should not be changed once you create your project. However, you should update this file regularly based on the most recent version in this repository.
 
-### composer.libraries.json
-
-This will include all the required libraries for your Openfed project and should not be changed. However, you should update this file regularly based on the most recent version in this repository.
-
 ## Usage
+
+### Installation
 
 This project requires the installation of [composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
 
@@ -32,6 +30,21 @@ After that you can create the project:
 ```
 composer create-project openfed/openfed8-project:^10.0 MYPROJECT
 ```
+
+### Update
+
+The best is to download the latest version and replace your project with the files. If you have custom modules defined on your composer.json, you need to copy the to the new composer.json file.
+You can delete the existing composer.libraries.json as it has been removed from this project.
+
+Since Openfed 8.x-10.0 there's a composer script (Experimental) which you can run in order to have your local project **partially** updated. To update your projects you can:
+- Backup your site
+- Run <pre>composer run-script openfed-update</pre>
+- Manually update composer.json (it's recommended to use the composer.json from this repo and ajust it to use your projects/patches)
+- Run <pre>composer update</pre>
+
+Your project should now be updated.
+
+### Require new modules
 
 With `composer require ...` you can download new dependencies to your
 installation.
@@ -49,7 +62,7 @@ all files not excluded by the .gitignore file.
 
 ### Memory limit errors
 
-When running "composer install" you may get some memory limit issues. This is due to the composer dependency resolver since we have a big list of dependencies. 
+When running "composer install" you may get some memory limit issues. This is due to the composer dependency resolver since we have a big list of dependencies.
 To bypass this issue, you have 3 options:
 
 #### option 1
