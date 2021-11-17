@@ -53,7 +53,8 @@
             ],
             "docroot/libraries/{$name}": [
                 "type:drupal-library",
-                "type:openfed-ckeditor-template"
+                "type:openfed-ckeditor-template",
+                "type:theme-library"
             ],
             "docroot/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -72,9 +73,6 @@
             ],
             "docroot/libraries/simplesamlphp/modules/{$name}": [
                 "type:simplesamlphp-module"
-            ],
-            "docroot/libraries/theme/{$name}": [
-                "type:theme-library"
             ]
         },
         "drupal-scaffold": {
