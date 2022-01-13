@@ -76,6 +76,15 @@
     "config": {
         "platform": {
             "php": "7.3"
+        },
+        "allow-plugins": {
+            "simplesamlphp/composer-module-installer": true,
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true,
+            "cweagans/composer-patches": true,
+            "drupal/console-extend-plugin": true,
+            "drupal/core-composer-scaffold": true,
+            "wikimedia/composer-merge-plugin": true
         }
     }
 }
