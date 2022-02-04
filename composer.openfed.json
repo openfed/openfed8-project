@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "openfed/openfed8": "^10.0"
+        "openfed/openfed8": "8.10.x-dev"
     },
     "require-dev": { },
     "scripts": {
@@ -32,9 +32,6 @@
         ],
         "post-update-cmd": [
             "composer install"
-        ],
-        "openfed-update": [
-            "OpenfedProject\\composer\\OpenfedUpdate::update"
         ]
     },
     "extra": {
