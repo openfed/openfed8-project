@@ -20,6 +20,14 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "scripts": {
+        "project-update": [
+            "OpenfedProject\\composer\\OpenfedUpdate::update"
+        ],
+        "project-upgrade": [
+            "OpenfedProject\\composer\\OpenfedUpdate::upgrade"
+        ]
+    },
     "extra": {
         "merge-plugin": {
             "require": [
