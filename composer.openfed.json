@@ -20,11 +20,12 @@
         }
     ],
     "require": {
-        "openfed/openfed8": "8.10.x-dev"
+        "openfed/openfed8": "^10.0"
     },
     "require-dev": { },
     "scripts": {
         "pre-update-cmd": [
+            "rm -rf docroot/profiles/contrib/openfed8",
             "OpenfedProject\\composer\\OpenfedValidations::validateUpdate810"
         ],
         "post-install-cmd": [
